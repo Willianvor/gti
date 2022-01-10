@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Atualizar gti.highsoft.com.br no servidor
+      uses: appleboy/ssh-action@master
+      with:
+        host: gti.highsoft.com.br
+        username: gti@highsoft.com.br
+        password: 2021@Hs@Dev!
+        port: 22
+        script: |
+          cd projetos/gti
+          git pull origin master
+          composer install
+          composer dump-autoload
