@@ -47,13 +47,13 @@ class IssueRepository
     public function loadTrelloParams($request, $firstList): array
     {
         $trelloParams = [
-            'name' => $request->issue['title'],
+            'name' => $request->issue->title,
             'pos' => 'top',
             'idList' => $firstList->id
         ];
 
-        if ($request->issue['body']) {
-            $trelloParams['desc'] = $request->issue['body'];
+        if ($request->issue->body) {
+            $trelloParams['desc'] = $request->issue->body;
         }
 
         return $this->addQueryKeyToken($trelloParams);
