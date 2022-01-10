@@ -28,7 +28,7 @@ class IssueController extends Controller
 
                 $queryParams = $issueRepo->loadTrelloParams($request, $firstList);
 
-                $response = $issueRepo->post('/cards', ['query' => $queryParams]);
+                $response = $issueRepo->post('/cards', $queryParams);
 
                 if ($response->getStatusCode() == 200) {
                     $cardId = json_decode($response->getBody()->getContents());

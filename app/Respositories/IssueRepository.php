@@ -29,10 +29,9 @@ class IssueRepository
     /**
      * @throws GuzzleException
      */
-    public function post(string $context, array $queryParams): int
+    public function post(string $context, array $queryParams): ResponseInterface
     {
-        $response = $this->client->post(self::$baseUrl.$context, ['query' => $queryParams]);
-        return $response->getStatusCode();
+        return $this->client->post(self::$baseUrl.$context, ['query' => $queryParams]);
     }
 
     /**
